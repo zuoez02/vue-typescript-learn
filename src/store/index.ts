@@ -1,15 +1,15 @@
-import Vue from 'vue'
-import Vuex, { ModuleTree } from 'vuex'
-import { RootState } from '../types/store'
+import Vue from 'vue';
+import Vuex, { ModuleTree } from 'vuex';
+import { RootState } from '@/types/store';
 
-import { systemStatus } from './system-status'
+import { systemStatus } from './system-status';
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 const modules: ModuleTree<RootState> = {
-  systemStatus
-}
+  systemStatus,
+};
 
 export const store = new Vuex.Store({
-  modules
-})
+  modules,
+});
