@@ -9,11 +9,11 @@
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import { Getter, Mutation, Action } from 'vuex-class';
-import * as TYPES from './constants';
+import * as TYPES from '@/constants';
 
 @Component({})
 export default class App extends Vue {
-  typescript: String = 'I\'m typescript';
+  typescript: string = 'I\'m typescript';
 
   @Getter loading: boolean;
   @Mutation(TYPES.UPDATE_STATUS) updateStatus: any;

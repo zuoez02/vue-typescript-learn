@@ -4,7 +4,7 @@
     "lib": [
       "es5",
       "es2015.promise",
-      "dom"
+      "dom",
     ],
     "module": "es2015",
     "moduleResolution": "node",
@@ -17,6 +17,8 @@
     "suppressImplicitAnyIndexErrors": true,
     "allowSyntheticDefaultImports": true,
     "allowJs": true,
+    "sourceMap": false,
+    "inlineSourceMap": true,
     "baseUrl": ".",
     "paths": {
       "@/*": [
@@ -26,7 +28,9 @@
   },
   "include": [
     "src/**/*.ts",
-    "src/**/*.vue"
+    "src/**/*.vue",
+    "node_modules/@types/mocha/index.d.ts",
+    "node_modules/@types/chai/index.d.ts"
   ],
   "exclude": [
     "node_modules"

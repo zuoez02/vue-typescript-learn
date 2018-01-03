@@ -31,12 +31,12 @@ export default class HelloWorld extends Vue {
   msg: string = 'Welcome to Your Vue.js App';
 
   mounted() {
-    console.log(this.$router);
+
   }
 
   @Watch('msg')
   onMsgChanged(newVal, oldVal): void {
-    console.log('onMsgChanged');
+
   }
 
   get newMsg(): string {
