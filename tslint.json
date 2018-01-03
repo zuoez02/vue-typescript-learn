@@ -4,7 +4,8 @@
   "jsRules": {},
   "rules": {
     "import-name": false,
-    "function-name": false
+    "function-name": false,
+    "object-literal-key-quotes": false
   },
   "rulesDirectory": []
 }

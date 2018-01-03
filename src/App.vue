@@ -1,28 +1,27 @@
-<template>
-  <div id="app">
-    <img @click="udpateStatusAsync(!loading)" src="./assets/logo.png">
-    <span @click="updateStatus(!loading)">{{ typescript }} {{ loading }}</span>
-    <router-view/>
-  </div>
+<template lang="pug">
+#app
+  img(@click="udpateStatusAsync(!loading)", src="./assets/logo.png")
+  span(@click="updateStatus(!loading)") {{ typescript }} {{ loading }}
+  router-view
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-import Component from 'vue-class-component'
-import { Getter, Mutation, Action } from 'vuex-class'
+import Vue from 'vue';
+import Component from 'vue-class-component';
+import { Getter, Mutation, Action } from 'vuex-class';
 import * as TYPES from './constants';
 
 @Component({})
 export default class App extends Vue {
-  typescript: String = "I'm typescript"
+  typescript: String = 'I\'m typescript';
 
-  @Getter loading: boolean
-  @Mutation(TYPES.UPDATE_STATUS) updateStatus: any
-  @Action(TYPES.UPDATE_STATUS) udpateStatusAsync: any
+  @Getter loading: boolean;
+  @Mutation(TYPES.UPDATE_STATUS) updateStatus: any;
+  @Action(TYPES.UPDATE_STATUS) udpateStatusAsync: any;
 }
 </script>
 
-<style>
+<style lang="less">
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

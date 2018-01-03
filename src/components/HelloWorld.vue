@@ -23,24 +23,34 @@
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
+import { Watch } from 'vue-property-decorator';
+import { Getter } from 'vuex-class';
 
 @Component({})
 export default class HelloWorld extends Vue {
-  msg: String = 'Welcome to Your Vue.js App';
+  msg: string = 'Welcome to Your Vue.js App';
 
-  mounted () {
-    console.log('mounted');
+  mounted() {
+    console.log(this.$router);
   }
 
-  get newMsg () {
+  @Watch('msg')
+  onMsgChanged(newVal, oldVal): void {
+    console.log('onMsgChanged');
+  }
+
+  get newMsg(): string {
     return this.msg.slice(0, -2);
   }
+
+  @Getter loading: boolean;
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1, h2 {
+h1,
+h2 {
   font-weight: normal;
 }
 ul {
