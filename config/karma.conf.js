@@ -5,7 +5,7 @@
 
 var webpackConfig = require('../build/webpack.test.conf');
 
-module.exports = function (config) {
+module.exports = function(config) {
   config.set({
     // to run in additional browsers:
     // 1. install corresponding karma launcher
@@ -13,29 +13,63 @@ module.exports = function (config) {
     // 2. add it to the `browsers` array below.
     basePath: '',
     browsers: ['PhantomJS'],
-    frameworks: ['mocha', 'sinon-chai', 'source-map-support'],
+    frameworks: ['mocha', 'chai'],
     reporters: ['progress', 'coverage', 'spec', 'html', 'mocha'],
+    // customContextFile: '../index.html',
     files: [
       '../node_modules/babel-polyfill/dist/polyfill.js',
-      { pattern: './spec.bundle.js', watched: false }
+      { pattern: './spec.bundle.ts', watched: false },
     ],
     preprocessors: {
-      './spec.bundle.js': ['webpack', 'sourcemap']
+      './spec.bundle.ts': ['webpack', 'sourcemap'],
     },
     webpack: webpackConfig,
+
     webpackMiddleware: {
-      noInfo: true
+      noInfo: true,
     },
+
+    webpackServer: {
+      noInfo: true, // prevent console spamming when running in Karma!
+    },
+    reporters: ['spec', 'coverage', 'progress', 'html', 'mocha'],
+
     coverageReporter: {
       reporters: [
-        { type: 'html', dir: '../report/coverage/html-js' },
-        { type: 'json', dir: '../report/coverage/json' },
+        { type: 'html', dir: '../report/coverage/' },
         { type: 'text' },
-        { type: 'text-summary' }
-      ]
+        { type: 'text-summary' },
+      ],
     },
+
     htmlReporter: {
-      outputFile: '../report/unit/units.html'
+      outputFile: '../report/unit/units.html',
     },
-  })
-}
+
+    mime: {
+      'text/x-typescript': ['ts'],
+    },
+
+    // web server port
+    port: 9876,
+
+    // enable colors in the output
+    colors: true,
+
+    // level of logging
+    // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
+    logLevel: config.LOG_INFO,
+
+    // toggle whether to watch files and rerun tests upon incurring changes
+    autoWatch: false,
+
+    // start these browsers
+    // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
+    browsers: ['PhantomJS'],
+
+    // if true, Karma runs tests once and exits
+    singleRun: true,
+
+    browserNoActivityTimeout: 20000,
+  });
+};

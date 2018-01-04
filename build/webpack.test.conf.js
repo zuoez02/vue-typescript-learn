@@ -5,6 +5,7 @@ const utils = require('./utils');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const baseWebpackConfig = require('./webpack.base.conf');
+const SourceMapDevToolPlugin = require('webpack/lib/SourceMapDevToolPlugin');
 
 const webpackConfig = merge(baseWebpackConfig, {
   // use inline sourcemap for karma-sourcemap-loader
@@ -23,15 +24,29 @@ const webpackConfig = merge(baseWebpackConfig, {
     new webpack.DefinePlugin({
       'process.env': require('../config/test.env'),
     }),
+    new SourceMapDevToolPlugin({
+      filename: null,
+      test: /\.(ts|js)($|\?)/i,
+    }),
   ],
 });
 
-webpackConfig.module.rules.push = {
+webpackConfig.module.rules[1].query = {
+  compilerOptions: {
+    inlineSourceMap: true,
+    sourceMap: false,
+  },
+};
+
+webpackConfig.module.rules.push({
   test: /\.ts$/,
+  enforce: 'post',
   loader: 'istanbul-instrumenter-loader',
   exclude: ['node_modules', /\.spec\.ts$/],
-  // enforce: 'post',
-};
+  query: {
+    esModules: true,
+  },
+});
 
 // no need for app entry during tests
 delete webpackConfig.entry;
