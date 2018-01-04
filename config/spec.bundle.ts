@@ -1,3 +1,4 @@
+// tslint:disable
 // Polyfill fn.bind() for PhantonpmmJS
 /* eslint-disable no-extend-native */
 Function.prototype.bind = require('function-bind');
