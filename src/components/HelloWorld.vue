@@ -25,25 +25,35 @@ import Vue from 'vue';
 import Component from 'vue-class-component';
 import { Watch } from 'vue-property-decorator';
 import { Getter } from 'vuex-class';
+import { baseService } from '@/api/base.service';
+import { GettingData } from '@/utils/getting-data';
+import { Error } from '@/utils/http';
+import { User } from '@/interfaces/user';
 
 @Component({})
 export default class HelloWorld extends Vue {
   msg: string = 'Welcome to Your Vue.js App';
 
-  mounted() {
-
+  async mounted() {
+    const user = await this.getUser();
+    console.log(user);
   }
 
   @Watch('msg')
-  onMsgChanged(newVal, oldVal): void {
-
-  }
+  onMsgChanged(newVal, oldVal): void {}
 
   get newMsg(): string {
     return this.msg.slice(0, -2);
   }
 
   @Getter loading: boolean;
+
+  @GettingData()
+  async getUser(): Promise<User> {
+    const res = await baseService.getUser();
+    const user = res.data.data;
+    throw Error('no user');
+  }
 }
 </script>
 

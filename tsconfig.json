@@ -3,11 +3,10 @@
     "target": "es5",
     "lib": [
       "es5",
-      "es2015",
       "es2015.promise",
-      "dom",
+      "dom"
     ],
-    "module": "esnext",
+    "module": "es2015",
     "moduleResolution": "node",
     "isolatedModules": false,
     "experimentalDecorators": true,
@@ -18,7 +17,6 @@
     "suppressImplicitAnyIndexErrors": true,
     "allowSyntheticDefaultImports": true,
     "allowJs": true,
-    "sourceMap": true,
     "baseUrl": ".",
     "paths": {
       "@/*": [
@@ -28,15 +26,9 @@
   },
   "include": [
     "src/**/*.ts",
-    "src/**/*.vue"
+    "src/**/*.vue",
+    "test/**/*.ts"
   ],
-  "typeAcquisition": {
-    "include": [
-      "mocha",
-      "chai",
-      "webpack-env"
-    ]
-  },
   "exclude": [
     "node_modules"
   ],

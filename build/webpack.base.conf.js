@@ -8,6 +8,8 @@ function resolve (dir) {
   return path.join(__dirname, '..', dir)
 }
 
+
+
 module.exports = {
   context: path.resolve(__dirname, '../'),
   entry: {
@@ -21,7 +23,7 @@ module.exports = {
       : config.dev.assetsPublicPath
   },
   resolve: {
-    extensions: [ '.ts', '.js', '.vue', '.json'],
+    extensions: ['.ts', '.js', '.vue', '.json'],
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src'),
@@ -31,16 +33,11 @@ module.exports = {
     rules: [
       {
         test: /\.ts$/,
-        exclude: /node_modules|vue\src/,
+        exclude: /node_modules|vue\/src/,
         loader: 'ts-loader',
         options: {
           appendTsSuffixTo: [/\.vue$/]
         }
-      },
-      {
-        test: /\.ts$/,
-        exclude: /node_modules/,
-        loader: 'awesome-typescript-loader'
       },
       {
         test: /\.vue$/,
@@ -48,13 +45,13 @@ module.exports = {
         options: vueLoaderConfig
       },
       {
-        test: /\.pug$/,
-        loader: 'pug-loader'
-      },
-      {
         test: /\.js$/,
         loader: 'babel-loader',
         include: [resolve('src'), resolve('test')]
+      },
+      {
+        test: /\.pug$/,
+        loader: 'pug-loader'
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
@@ -80,7 +77,7 @@ module.exports = {
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
       }
-    ],
+    ]
   },
   node: {
     // prevent webpack from injecting useless setImmediate polyfill because Vue
