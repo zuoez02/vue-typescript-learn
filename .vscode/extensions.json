@@ -1,0 +1,13 @@
+{
+	// See http://go.microsoft.com/fwlink/?LinkId=827846
+	// for the documentation about the extensions.json format
+	"recommendations": [
+		// Extension identifier format: ${publisher}.${name}. Example: vscode.csharp
+    "prograhammer.tslint-vue",
+    "EditorConfig.EditorConfig",
+    "Orta.vscode-jest",
+    "christian-kohler.npm-intellisense",
+    "christian-kohler.path-intellisense",
+    "octref.vetur"
+	]
+}
