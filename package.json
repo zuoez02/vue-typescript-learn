@@ -2,7 +2,7 @@
   "name": "vue-typescript",
   "version": "1.0.0",
   "description": "A Vue.js project",
-  "author": "IMike <gzxessence@163.com>",
+  "author": "zuoez02@outlook.com",
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
